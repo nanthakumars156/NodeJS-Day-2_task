@@ -11,7 +11,7 @@ let rooms = [];
 let bookings = [];
 
 // Function to generate unique IDs
-const generateId = () => "_" + Math.random().toString(36).substr(2, 9);
+const generateId = () => "_" + Math.random().toString().substring(2,9);
 
 // 1. Creating a room
 webServer.post("/rooms", (req, res) => {
@@ -28,7 +28,7 @@ webServer.post("/rooms", (req, res) => {
 });
 
 // 2. Booking a room
-webServer.post("/book-room", (req, res) => {
+webServer.post("/bookroom", (req, res) => {
   const { customerName, date, startTime, endTime, roomId } = req.body;
   const room = rooms.find((r) => r.id === roomId);
   if (!room) {
@@ -92,7 +92,7 @@ webServer.get("/customers", (req, res) => {
 });
 
 // 5. List how many times a customer has booked a room with booking details
-webServer.get("/customer-bookings/:customerName", (req, res) => {
+webServer.get("/bookings/:customerName", (req, res) => {
   const { customerName } = req.params;
   const customerBookings = bookings
     .filter((booking) => booking.customerName === customerName)
