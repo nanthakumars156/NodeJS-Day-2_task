@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+require ('dotenv').config();
 const webServer = express();
-const PORT = 3000;
+
 // to convert into json
 webServer.use(bodyParser.json());
 
